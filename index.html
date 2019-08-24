@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+
+function computerPlay() {
+  throwNumber = getThrowNumber(3)
+  switch (throwNumber) {
+
+    case 0:
+    return "Rock"
+
+    case 1:
+    return "Paper"
+
+    case 2:
+    return "Scissors"
+
+  }
+
+}
+
+function getThrowNumber(nThrowOptions) {
+throwNumber = Math.floor(Math.random() * nThrowOptions);
+return throwNumber;
+}
+
+
+var i 
+for (i = 1; i < 25; i++) {
+  console.log("Throw " + i + " computer throws " + computerPlay() + ".");
+}
+
+
+  </script>
+</body>
+</html>
