@@ -6,8 +6,91 @@
   <script>
 
 
+let scoreP = 0
+let scoreC = 0
+
+game();
+
+function convertToProper (string) { 
+  let upperStringPart = string[0].toUpperCase();
+  let lowerStringPart = string.slice(1).toLowerCase();
+  return upperStringPart + lowerStringPart;
+}
+
+
+function playRound (playerSelection, computerSelection) {
+
+let outcome
+
+switch (playerSelection) {
+  case "Rock":
+    switch (computerSelection) {
+      case "Rock":
+      outcome = "draw";
+      break;
+
+      case "Paper":
+      outcome = "computer";
+      break;
+
+      case "Scissors":
+      outcome = "player";
+      break;
+    }
+    break;
+
+  case "Paper":
+  switch (computerSelection) {
+      case "Rock":
+      outcome = "player";
+      break;
+
+      case "Paper":
+      outcome = "draw";
+      break;
+
+      case "Scissors":
+      outcome = "computer";
+      break;
+    }
+    break;
+  case "Scissors":
+  switch (computerSelection) {
+      case "Rock":
+      outcome = "computer";
+      break;
+
+      case "Paper":
+      outcome = "player";
+      break;
+
+      case "Scissors":
+      outcome = "draw";
+      break;
+
+    }
+}
+
+switch (outcome) {
+  case "player":
+  console.log("Player: " + ++scoreP)
+  return "You win! " + playerSelection + " beats " + computerSelection;
+  break;
+
+  case "computer":
+  console.log("Computer: " + ++scoreC)
+  return "You Lose! " + computerSelection + " beats " + playerSelection;
+  break;
+
+  default:
+  return "It's a draw!";
+}
+
+}
+
+
 function computerPlay() {
-  throwNumber = getThrowNumber(3)
+  let throwNumber = getThrowNumber(3)
   switch (throwNumber) {
 
     case 0:
@@ -24,14 +107,29 @@ function computerPlay() {
 }
 
 function getThrowNumber(nThrowOptions) {
-throwNumber = Math.floor(Math.random() * nThrowOptions);
+let throwNumber = Math.floor(Math.random() * nThrowOptions);
 return throwNumber;
 }
 
 
-var i 
-for (i = 1; i < 25; i++) {
-  console.log("Throw " + i + " computer throws " + computerPlay() + ".");
+function game() {
+
+  let i 
+  let computerThrow
+  let playerThrow
+
+  for (i = 1; i <= 5; i++) {
+
+    computerThrow = computerPlay()
+    playerThrow = prompt("What do you throw?")
+    playerThrow = convertToProper(playerThrow)
+    console.log("Throw " + i + ": computer throws " + computerThrow + ", player throws " + playerThrow + ".");
+    console.log(playRound(playerThrow,computerThrow))
+  }
+
+console.log("the final score is:  player " + scoreP + " to computer " + scoreC + ".");
+
+
 }
 
 
