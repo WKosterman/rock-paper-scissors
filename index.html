@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Rock Paper Scissors game</title>
 </head>
 <body>
   <script>
@@ -9,7 +9,7 @@
 let scoreP = 0
 let scoreC = 0
 
-game();
+game(prompt("Let's play Rock, Paper, Scisors! How many rounds would you like to play?"));
 
 function convertToProper (string) { 
   let upperStringPart = string[0].toUpperCase();
@@ -112,13 +112,13 @@ return throwNumber;
 }
 
 
-function game() {
+function game(rounds) {
 
   let i 
   let computerThrow
   let playerThrow
 
-  for (i = 1; i <= 5; i++) {
+  for (i = 1; i <= rounds; i++) {
 
     computerThrow = computerPlay()
     playerThrow = prompt("What do you throw?")
@@ -127,7 +127,7 @@ function game() {
     console.log(playRound(playerThrow,computerThrow))
   }
 
-console.log("the final score is:  player " + scoreP + " to computer " + scoreC + ".");
+console.log("the final score is: player " + scoreP + " to computer " + scoreC + ".");
 
 
 }
